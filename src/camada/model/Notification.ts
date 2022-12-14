@@ -1,8 +1,6 @@
 import { Content } from "./Content"
 
 export interface Props {
-    
-    
     recipientId: string
     content: Content
     category: string
