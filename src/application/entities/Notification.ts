@@ -1,3 +1,4 @@
+import { randomUUID } from "crypto"
 import { Content } from "./Content"
 
 export interface Props {
@@ -9,13 +10,17 @@ export interface Props {
 }
 
 export class Notification  {
-    
-   private props: Props;
+    private _id: string;
+    private props: Props;
 
     public constructor(props: Props) {
         this.props = props;
+        this._id = randomUUID().toString();
     }
 
+    public get id(){
+        return this._id;
+    }
     public get readAt(){
         return this.props.readAt;
     }
