@@ -23,8 +23,7 @@ export class SendNotification{
         const notification = new Notification({
             recipientId,
             content: new Content(content),
-            category,
-            createdAt:new Date()
+            category
         });
         
         await this.repository.create(notification);

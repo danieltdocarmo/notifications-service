@@ -1,22 +1,23 @@
-import { randomUUID } from "crypto"
-import { Content } from "./Content"
+import { randomUUID } from "crypto";
+import { Content } from "./Content";
 
-export interface Props {
+export interface NotificationProps {
     recipientId: string
     content: Content
     category: string
     readAt?: Date | null
     canceledAt?: Date | null
-    createdAt: Date
+    createdAt?: Date | null
 }
 
 export class Notification  {
     private _id: string;
-    private props: Props;
+    private props: NotificationProps;
 
-    public constructor(props: Props) {
+    public constructor(props: NotificationProps) {
         this.props = props;
         this._id = randomUUID().toString();
+        this.props.canceledAt = new Date(Date.now());
     }
 
     public get id(){
@@ -56,5 +57,9 @@ export class Notification  {
 
     public cancel(){
         this.props.canceledAt = new Date(Date.now())
+    }
+
+    public get canceledAt(){
+        return this.props.canceledAt;
     }
 }
