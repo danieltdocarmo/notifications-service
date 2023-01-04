@@ -9,16 +9,17 @@ export class InMemoryNotificationRepository implements NotificationRepository {
     constructor() {
         this.notifications = [];
     }
+
+    async getManyNotificationByRecipientId(recipientId: string): Promise<Notification[]> {
+        return this.notifications.filter((notification) => notification.recipientId == recipientId);
+    }
     
     async coutManyNotificationByRecipientId(recipientId: string): Promise<number> {
-        const foundNotification = this.notifications.filter((notification) => notification.recipientId == recipientId)
-        
-        return foundNotification.length;
+        return this.notifications.filter((notification) => notification.recipientId == recipientId).length;
     }
 
     async findById(notificationId: string): Promise<Notification | null> {
-        const notification = this.notifications.find(notification => notification.recipientId == notificationId)
-        return notification;
+        return this.notifications.find(notification => notification.recipientId == notificationId);
     }
 
     async save(note: Notification): Promise<void> {

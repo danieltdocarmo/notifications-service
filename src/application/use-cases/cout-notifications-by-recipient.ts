@@ -21,6 +21,5 @@ export class CoutNotificationByRecipientId{
         const notificationsNumber = await  this.notificationRepository.coutManyNotificationByRecipientId(recipientId);
 
         return {value: notificationsNumber}
- 
     }
 }

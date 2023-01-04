@@ -11,4 +11,6 @@ export abstract class NotificationRepository{
     abstract save(notification: Notification):Promise<void>;
 
     abstract coutManyNotificationByRecipientId(recipientId: string):Promise<number>;
+
+    abstract getManyNotificationByRecipientId(recipientId: string):Promise<Notification[]>;
 }
