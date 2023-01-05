@@ -14,10 +14,9 @@ export class Notification  {
     private _id: string;
     private props: NotificationProps;
 
-    public constructor(props: NotificationProps) {
+    public constructor(props: NotificationProps, id ?: string) {
         this.props = props;
-        this._id = randomUUID().toString();
-        this.props.canceledAt = new Date(Date.now());
+        this._id = randomUUID().toString() ?? id;
     }
 
     public get id(){
