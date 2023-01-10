@@ -6,8 +6,7 @@ import { CoutNotificationByRecipientId } from 'src/application/use-cases/cout-no
 import { GetManyNotificationsByRecipientId } from 'src/application/use-cases/get-notifications-by-recipient-id';
 import { ReadNotification } from 'src/application/use-cases/read-notification';
 import { UnreadNotification } from 'src/application/use-cases/unread-notification';
-import { Notification } from 'src/application/entities/Notification';
-import 
+import { Notification } from 'src/application/entities/Notification'; 
 
 @Controller('notification')
 export class NotificationsController {
@@ -17,7 +16,7 @@ export class NotificationsController {
     private readonly getManyNotificationsByRecipientId: GetManyNotificationsByRecipientId,
     private readonly readNotificationService: ReadNotification,
     private readonly unreadNotificationService: UnreadNotification){}
-
+  
   @Patch(':id/cancel')
   async cancel(@Param('id') id: string) {
     await this.cancelNotificationService.execute({ notificationId: id });
